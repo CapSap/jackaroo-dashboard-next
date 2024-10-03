@@ -81,7 +81,10 @@ export async function POST(request: NextRequest) {
       // Insert the record, skip if `order_id` conflicts
       const { error } = await supabase
         .from("viare_shipped_orders")
+
         .insert([record]);
+      // .upsert([record], { onConflict: "order_id" });
+      // upsert does not throw an error so it doesnt get counted.
 
       if (!error) {
         successfullyInserted += 1;
