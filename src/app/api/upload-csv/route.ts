@@ -16,12 +16,11 @@ export async function POST(request: NextRequest) {
 
   // Convert buffer to string for processing CSV content
   const csvContent = buffer.toString("utf-8");
-  console.log("CSV Content:", csvContent);
 
   const rows = csvContent.split("\n").slice(1); // Skip the first row (report name w/ time period selected)
   const reportContent = rows.join("\n");
 
-  console.log("rows", rows.slice(0, 3));
+  console.log("final", reportContent);
 
   // Parse CSV data in memory
   try {
