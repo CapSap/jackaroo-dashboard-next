@@ -11,6 +11,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.5.1",
     "@supabase/supabase-js": "^2.45.4",
+    "@carbon/react": "^1.67.1",
     "csv-parse": "^5.5.6",
     "next": "14.2.14",
     "react": "^18",
@@ -22,6 +23,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "sass": "^1.79.4",
     "typescript": "^5"
   }
 }
