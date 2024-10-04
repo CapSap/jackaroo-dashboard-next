@@ -1,6 +1,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --green-dark: #016b41;
+  --brown-dark: #6b1201;
+  --green-med: #2cab78;
+  --brown-med: #c05742;
+  --green-light: #78ebbd;
+  --brown-light: #ffbaad;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,11 +50,18 @@ a {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  padding: 1.5rem 2rem;
-  background-color: #eaeaea;
+  background-color: var(--brown-light);
+
   gap: 10px;
 }
 
 .nav__item {
+  padding: 1.5rem 2rem;
+  font-weight: bold;
   font-size: 20px;
+  padding: 10px;
+}
+
+.nav__item:hover {
+  background-color: #c05742;
 }
