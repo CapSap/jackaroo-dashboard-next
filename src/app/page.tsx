@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import Upload from "./components/Upload";
+import Dashboard from "./components/Dashboard";
 
 export default async function Home() {
   const supabase = createClient();
@@ -7,7 +8,8 @@ export default async function Home() {
 
   return (
     <div>
-      <Upload />
+      home page
+      <Dashboard />
     </div>
   );
 }

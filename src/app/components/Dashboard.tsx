@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { format, startOfWeek, endOfWeek, isSameWeek, subWeeks } from "date-fns";
 
-export default function Home() {
+export default function Dashboard() {
   const [selectedDate, setSelectedDate] = useState<{
     label: string;
     start: Date;
