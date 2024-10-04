@@ -41,7 +41,7 @@ a {
   }
 }
 
-nav {
+.nav {
   display: flex;
   flex-wrap: wrap;
   padding: 1.5rem 2rem;
@@ -49,6 +49,6 @@ nav {
   gap: 10px;
 }
 
-nav .list {
+.nav__item {
   font-size: 20px;
 }
