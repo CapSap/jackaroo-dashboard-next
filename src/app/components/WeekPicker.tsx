@@ -4,11 +4,7 @@ import { useEffect, useState } from "react";
 import { format, startOfWeek, endOfWeek, isSameWeek, subWeeks } from "date-fns";
 
 export default function WeekPicker() {
-  const [selectedDate, setSelectedDate] = useState<{
-    label: string;
-    start: Date;
-    end: Date;
-  }>();
+  const [selectedDate, setSelectedDate] = useState<SelectedDate>();
 
   // Function to generate weeks for the current year
   const generateWeeks = () => {
