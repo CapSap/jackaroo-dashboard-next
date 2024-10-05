@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { format, startOfWeek, endOfWeek, isSameWeek, subWeeks } from "date-fns";
 
-export default function Dashboard() {
+export default function WeekPicker() {
   const [selectedDate, setSelectedDate] = useState<{
     label: string;
     start: Date;
