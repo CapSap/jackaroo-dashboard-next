@@ -103,3 +103,8 @@ export async function POST(request: NextRequest) {
     message: `Data upload complete. ${successfullyInserted} rows inserted, ${failedRows} rows skipped.`,
   });
 }
+
+export async function GET(request: NextRequest) {
+  const data = await request.json();
+  console.log(data);
+}

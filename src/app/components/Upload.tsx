@@ -21,7 +21,7 @@ export default function Upload() {
 
       data.set("csv", csv);
 
-      const res = await fetch("/api/upload-csv", options);
+      const res = await fetch("/api/shipped-orders", options);
       if (!res.ok) throw new Error(await res.text());
     } catch (err) {
       console.error(err);
