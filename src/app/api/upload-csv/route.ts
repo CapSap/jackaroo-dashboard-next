@@ -1,4 +1,4 @@
-import { createClient as createSupabaseClient } from "@/utils/supabase/server";
+import { createSupabaseClient } from "@/utils/supabase/server";
 import { parse } from "csv-parse";
 import { NextRequest, NextResponse } from "next/server";
 

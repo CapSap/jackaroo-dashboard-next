@@ -1,9 +1,9 @@
-import { createClient } from "@/utils/supabase/server";
+import { createSupabaseClient } from "@/utils/supabase/server";
 import Upload from "./components/Upload";
 import Dashboard from "./components/Dashboard";
 
 export default async function Home() {
-  const supabase = createClient();
+  const supabase = createSupabaseClient();
   const { data: notes } = await supabase.from("notes").select();
 
   return (
