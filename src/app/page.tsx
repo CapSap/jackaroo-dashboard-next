@@ -1,15 +1,17 @@
 import { createSupabaseClient } from "@/utils/supabase/server";
 import Upload from "./components/Upload";
-import Dashboard from "./components/Dashboard";
+import WeekPicker from "./components/WeekPicker";
 
 export default async function Home() {
   const supabase = createSupabaseClient();
-  const { data: notes } = await supabase.from("notes").select();
+  const { data: notes } = await supabase.from("viare_shipped_orders").select();
+
+  console.log(notes);
 
   return (
     <div>
       home page
-      <Dashboard />
+      <WeekPicker />
     </div>
   );
 }
