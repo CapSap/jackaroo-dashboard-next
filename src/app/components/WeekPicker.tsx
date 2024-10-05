@@ -45,24 +45,22 @@ export default function WeekPicker() {
   }
 
   async function getOrders() {
+    if (!selectedDate) {
+      return null;
+    }
     const options: RequestInit = {
       method: "GET",
     };
 
-    const [startDate, endDate] = [
-      selectedDate?.start.toString(),
-      selectedDate?.end.toString(),
-    ];
-
     try {
       const res = await fetch(
-        `/api/shipped-orders?start=${startDate}&end=${endDate}`,
+        `/api/shipped-orders?start=${selectedDate.start}&end=${selectedDate.end}`,
         options
       );
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       }
-      const data = res.json();
+      const data = await res.json();
       console.log("log from getorders func", data);
       return data;
     } catch (err) {
