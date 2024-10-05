@@ -40,12 +40,39 @@ export default function WeekPicker() {
   }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    console.log("change attempt");
     const selected = JSON.parse(e.target.value);
     setSelectedDate(selected);
   }
 
-  console.log("comp re-redner");
+  async function getOrders() {
+    const options: RequestInit = {
+      method: "GET",
+    };
+
+    const [startDate, endDate] = [
+      selectedDate?.start.toString(),
+      selectedDate?.end.toString(),
+    ];
+
+    try {
+      const res = await fetch(
+        `/api/shipped-orders?start=${startDate}&end=${endDate}`,
+        options
+      );
+      if (!res.ok) {
+        throw new Error(`Error: ${res.status}`);
+      }
+      const data = res.json();
+      console.log("log from getorders func", data);
+      return data;
+    } catch (err) {
+      console.error("Failed to fetch orders:", err);
+    }
+  }
+
+  useEffect(() => {
+    getOrders();
+  }, [selectedDate]);
 
   return (
     <div>
