@@ -22,9 +22,6 @@ export async function POST(request: NextRequest) {
     .split("\n")
     .slice(2)
     .filter((row) => row.trim().length > 0); // Filter out empty rows;
-  const reportContent = rows.join("\n");
-
-  // console.log(rows);
 
   const supabase = createSupabaseClient();
   let successfullyInserted = 0;

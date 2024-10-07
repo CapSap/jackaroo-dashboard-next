@@ -1,3 +1,5 @@
+import { Order } from "@/types/types";
+
 export default function Card({ orders }: { orders: Order[] }) {
   console.log(orders);
   const title = orders[0].dispatch_point;

@@ -1,3 +1,4 @@
+import { Order } from "@/types/types";
 import Card from "./Card";
 
 export default function Dashboard({ orders }: { orders: Order[] }) {

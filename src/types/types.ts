@@ -1,16 +1,16 @@
-type SelectedDate = {
+export type SelectedDate = {
   label: string;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
 };
 
-type OrdersResponse = {
+export type OrdersResponse = {
   success: string;
   orders?: Order[];
   message?: string;
 };
 
-type Order = {
+export type Order = {
   country: string | null;
   currency: string | null;
   customer_id: string | null;
