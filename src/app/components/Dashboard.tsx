@@ -1,10 +1,6 @@
-"use client";
-
 import Card from "./Card";
 
 export default function Dashboard({ orders }: { orders: Order[] }) {
-  console.log(orders);
-
   const sydneyOrders = orders.filter(
     (order) => order.dispatch_point === "Sydney"
   );
@@ -33,14 +29,28 @@ export default function Dashboard({ orders }: { orders: Order[] }) {
   );
 
   const sevenHillsOrders = orders.filter(
-    (order) => order.dispatch_point === "Sydney"
+    (order) => order.dispatch_point === "Seven Hills"
   );
 
   return (
     <div>
-      dashy
-      <div>In this week a total of {orders.length} orders have been placed</div>
-      <Card />
+      <div>
+        In this week a total of {orders.length} viare orders have been shipped
+      </div>
+      <div>
+        {orders.length > 0 && (
+          <>
+            <Card orders={sevenHillsOrders} />
+            <Card orders={melbourneOrdes} />
+            <Card orders={ringwoodOrders} />
+            <Card orders={canberraOrders} />
+            <Card orders={perthOrders} />
+            <Card orders={fortitudeValleyOrders} />
+            <Card orders={hobartOrders} />
+            <Card orders={sydneyOrders} />
+          </>
+        )}
+      </div>
     </div>
   );
 }
