@@ -80,6 +80,10 @@ a {
   color: var(--green-light);
 }
 
+.loading {
+  font-size: 5em;
+}
+
 .date-picker {
   margin-top: 20px;
   padding: 1em;
