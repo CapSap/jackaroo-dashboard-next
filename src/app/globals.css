@@ -1,6 +1,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --green-dark: #016b41;
+  --brown-dark: #6b1201;
+  --green-med: #2cab78;
+  --brown-med: #c05742;
+  --green-light: #78ebbd;
+  --brown-light: #ffbaad;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,4 +45,116 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--brown-light);
+
+  gap: 10px;
+}
+
+.nav__item {
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.nav__item:hover {
+  background-color: #c05742;
+}
+
+.intro {
+  background-color: var(--green-dark);
+  padding: 20px;
+}
+
+.intro__heading {
+  font-size: 5em;
+  color: var(--green-light);
+}
+.intro__text {
+  font-size: 2em;
+  color: var(--green-light);
+}
+
+.loading {
+  font-size: 5em;
+}
+
+.date-picker {
+  margin-top: 20px;
+  padding: 1em;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  background-color: #2cab78;
+  border-radius: 0.5em;
+}
+
+.date-picker__label {
+  padding-right: 10px;
+}
+
+.date-picker__select {
+  font-size: 1em;
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid var(--green-light);
+  border-radius: 0.25em;
+}
+.dashboard-container {
+  background-color: var(--brown-med);
+}
+
+.dashboard-heading {
+  padding: 20px;
+  padding-top: 40px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  padding: 2em;
+  font-size: 1.5em;
+  border: 5px solid var(--brown-med);
+  background-color: var(--brown-light);
+}
+
+.upload__text {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.upload__input {
+  font-size: 3em;
+}
+.upload__button {
+  font-size: 3em;
+  padding: 1em;
+  margin: auto;
+}
+
+.message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 3em;
+}
+
+.message--success {
+  color: var(--green-med);
+}
+.message--error {
+  color: red;
 }

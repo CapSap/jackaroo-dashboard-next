@@ -1,5 +1,4 @@
-import { createClient as createSupabaseClient } from "@/utils/supabase/server";
-import { parse } from "csv-parse";
+import { createSupabaseClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -23,9 +22,6 @@ export async function POST(request: NextRequest) {
     .split("\n")
     .slice(2)
     .filter((row) => row.trim().length > 0); // Filter out empty rows;
-  const reportContent = rows.join("\n");
-
-  console.log(rows);
 
   const supabase = createSupabaseClient();
   let successfullyInserted = 0;
@@ -102,4 +98,51 @@ export async function POST(request: NextRequest) {
     success: true,
     message: `Data upload complete. ${successfullyInserted} rows inserted, ${failedRows} rows skipped.`,
   });
+}
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+
+  const start = searchParams.get("start");
+  const end = searchParams.get("end");
+
+  if (!start || !end) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Missing start or end date",
+      },
+      { status: 400 }
+    );
+  }
+
+  const supabase = createSupabaseClient();
+
+  try {
+    // Query the database using the date range from params
+    const { data: orders, error } = await supabase
+      .from("viare_shipped_orders")
+      .select()
+      .gte("order_date", start) // greater than or equal to
+      .lte("order_date", end); // less than or equal to
+
+    if (error) {
+      console.error("Error querying orders:", error);
+      return NextResponse.json({
+        success: false,
+        message: "Error querying the database",
+      });
+    }
+
+    return NextResponse.json({
+      success: true,
+      orders,
+    });
+  } catch (err) {
+    console.error("There was an error", err);
+    return NextResponse.json({
+      success: false,
+      message: "An unexpected error occurred",
+    });
+  }
 }
