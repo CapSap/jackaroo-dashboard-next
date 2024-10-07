@@ -101,7 +101,23 @@ a {
   border: 1px solid var(--green-light);
   border-radius: 0.25em;
 }
+.dashboard-container {
+  background-color: var(--brown-med);
+}
+
+.dashboard-heading {
+  padding: 20px;
+  padding-top: 40px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
 
 .card {
   border: 5px solid var(--brown-med);
+  background-color: var(--brown-light);
 }
