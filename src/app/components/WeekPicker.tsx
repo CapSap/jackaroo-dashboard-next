@@ -112,11 +112,13 @@ export default function WeekPicker() {
             </option>
           ))}
         </select>
-        {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
       </div>
-
-      <div>{orders && <Dashboard orders={orders} />}</div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>{orders && <Dashboard orders={orders} />}</div>
+      )}
     </div>
   );
 }
