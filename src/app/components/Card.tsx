@@ -1,7 +1,6 @@
 import { Order } from "@/types/types";
 
 export default function Card({ orders }: { orders: Order[] }) {
-  console.log(orders);
   const title = orders[0].dispatch_point;
 
   const expressOrders = orders.filter((order) => order.freight === 15);
@@ -18,8 +17,6 @@ export default function Card({ orders }: { orders: Order[] }) {
 
   const regOrderCount =
     orders.length - (expressOrders.length + cncOrders.length);
-
-  console.log(cncOrders);
 
   return (
     <div className="card">
