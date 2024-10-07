@@ -20,8 +20,8 @@ export default function Card({ orders }: { orders: Order[] }) {
   console.log(cncOrders);
 
   return (
-    <div>
-      <h3>{title} has achieved the following</h3>
+    <div className="card">
+      <h3>{title} </h3>
       <ul>
         <li>Total viare orders processed: {orders.length}</li>
         <li>Express shipments: {expressOrders.length}</li>
