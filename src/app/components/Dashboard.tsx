@@ -33,24 +33,22 @@ export default function Dashboard({ orders }: { orders: Order[] }) {
   );
 
   return (
-    <div>
-      <div>
+    <div className="dashboard-container">
+      <div className="dashboard-heading">
         In this week a total of {orders.length} viare orders have been shipped
       </div>
-      <div>
-        {orders.length > 0 && (
-          <>
-            <Card orders={sevenHillsOrders} />
-            <Card orders={melbourneOrdes} />
-            <Card orders={ringwoodOrders} />
-            <Card orders={canberraOrders} />
-            <Card orders={perthOrders} />
-            <Card orders={fortitudeValleyOrders} />
-            <Card orders={hobartOrders} />
-            <Card orders={sydneyOrders} />
-          </>
-        )}
-      </div>
+      {orders.length > 0 && (
+        <div className="card-container">
+          <Card orders={sevenHillsOrders} />
+          <Card orders={melbourneOrdes} />
+          <Card orders={ringwoodOrders} />
+          <Card orders={canberraOrders} />
+          <Card orders={perthOrders} />
+          <Card orders={fortitudeValleyOrders} />
+          <Card orders={hobartOrders} />
+          <Card orders={sydneyOrders} />
+        </div>
+      )}
     </div>
   );
 }
