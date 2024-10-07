@@ -65,3 +65,43 @@ a {
 .nav__item:hover {
   background-color: #c05742;
 }
+
+.intro {
+  background-color: var(--green-dark);
+  padding: 20px;
+}
+
+.intro__heading {
+  font-size: 5em;
+  color: var(--green-light);
+}
+.intro__text {
+  font-size: 2em;
+  color: var(--green-light);
+}
+
+.date-picker {
+  margin-top: 20px;
+  padding: 1em;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  background-color: #2cab78;
+  border-radius: 0.5em;
+}
+
+.date-picker__label {
+  padding-right: 10px;
+}
+
+.date-picker__select {
+  font-size: 1em;
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid var(--green-light);
+  border-radius: 0.25em;
+}
+
+.card {
+  border: 5px solid var(--brown-med);
+}

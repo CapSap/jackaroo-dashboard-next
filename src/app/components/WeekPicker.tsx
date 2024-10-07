@@ -96,22 +96,32 @@ export default function WeekPicker() {
 
   return (
     <div>
-      <div>
-        hello and welcome jack. please seleect a date range
-        <select
-          id="week-select"
-          onChange={(e) => handleChange(e)}
-          value={JSON.stringify(selectedDate)}
-        >
-          <option value="" disabled>
-            --Choose a week--
-          </option>
-          {weeks.map((week, index) => (
-            <option key={index} value={JSON.stringify(week)}>
-              {week.label}
+      <div className="intro">
+        <h1 className="intro__heading">Hello and welcome Jack and friends</h1>
+
+        <p className="intro__text">
+          This website will show viare orders that stores have touched in a week
+        </p>
+        <div className="date-picker">
+          <label htmlFor="week-select" className="date-picker__label">
+            Please choose a date range:{" "}
+          </label>
+          <select
+            className="date-picker__select"
+            id="week-select"
+            onChange={(e) => handleChange(e)}
+            value={JSON.stringify(selectedDate)}
+          >
+            <option value="" disabled>
+              --Choose a week--
             </option>
-          ))}
-        </select>
+            {weeks.map((week, index) => (
+              <option key={index} value={JSON.stringify(week)}>
+                {week.label}
+              </option>
+            ))}
+          </select>
+        </div>
         {error && <p>Error: {error}</p>}
       </div>
       {isLoading ? (
