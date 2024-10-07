@@ -124,12 +124,12 @@ export async function GET(request: NextRequest) {
   const supabase = createSupabaseClient();
 
   try {
-    // Query the database using the provided date range
+    // Query the database using the date range from params
     const { data: orders, error } = await supabase
       .from("viare_shipped_orders")
       .select()
-      .gte("order_date", start)
-      .lte("order_date", end);
+      .gte("order_date", start) // greater than or equal to
+      .lte("order_date", end); // less than or equal to
 
     if (error) {
       console.error("Error querying orders:", error);
