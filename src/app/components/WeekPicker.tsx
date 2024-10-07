@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { format, startOfWeek, endOfWeek, isSameWeek, subWeeks } from "date-fns";
+import Dashboard from "./Dashboard";
 
 export default function WeekPicker() {
   const [selectedDate, setSelectedDate] = useState<SelectedDate>();
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [orders, setOrders] = useState<Order[]>();
 
   // Function to generate weeks for the current year
   const generateWeeks = () => {
@@ -74,6 +76,8 @@ export default function WeekPicker() {
         throw new Error(data.message || "Failed to fetch orders");
       }
 
+      setOrders(data.orders);
+
       return data.orders;
     } catch (err) {
       const errorMessage =
@@ -92,23 +96,27 @@ export default function WeekPicker() {
 
   return (
     <div>
-      <div>hello and welcome jack. please seleect a date range</div>
-      <select
-        id="week-select"
-        onChange={(e) => handleChange(e)}
-        value={JSON.stringify(selectedDate)}
-      >
-        <option value="" disabled>
-          --Choose a week--
-        </option>
-        {weeks.map((week, index) => (
-          <option key={index} value={JSON.stringify(week)}>
-            {week.label}
+      <div>
+        hello and welcome jack. please seleect a date range
+        <select
+          id="week-select"
+          onChange={(e) => handleChange(e)}
+          value={JSON.stringify(selectedDate)}
+        >
+          <option value="" disabled>
+            --Choose a week--
           </option>
-        ))}
-      </select>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+          {weeks.map((week, index) => (
+            <option key={index} value={JSON.stringify(week)}>
+              {week.label}
+            </option>
+          ))}
+        </select>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+      </div>
+
+      <div>{orders && <Dashboard orders={orders} />}</div>
     </div>
   );
 }
