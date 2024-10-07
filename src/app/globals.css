@@ -127,3 +127,34 @@ a {
   border: 5px solid var(--brown-med);
   background-color: var(--brown-light);
 }
+
+.upload__text {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.upload__input {
+  font-size: 3em;
+}
+.upload__button {
+  font-size: 3em;
+  padding: 1em;
+  margin: auto;
+}
+
+.message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 3em;
+}
+
+.message--success {
+  color: var(--green-med);
+}
+.message--error {
+  color: red;
+}
