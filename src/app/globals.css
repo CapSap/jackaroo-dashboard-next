@@ -118,6 +118,8 @@ a {
 }
 
 .card {
+  padding: 2em;
+  font-size: 1.5em;
   border: 5px solid var(--brown-med);
   background-color: var(--brown-light);
 }
