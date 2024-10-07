@@ -124,7 +124,6 @@ export async function GET(request: NextRequest) {
   const supabase = createSupabaseClient();
 
   try {
-    console.log("try block running");
     // Query the database using the provided date range
     const { data: orders, error } = await supabase
       .from("viare_shipped_orders")
