@@ -49,8 +49,9 @@ export default function Upload() {
   return (
     <div>
       <p className="upload__text">
-        Hi Jack, from viare on-demand reports select "Sales Reports" -{">"}{" "}
-        "Shipped orders with split detail". Then upload that csv here.
+        Hi Jack, from viare on-demand reports select &quot;Sales Reports &quot;-
+        {">"} &quot;Shipped orders with split detail&quot;. Then upload that csv
+        here.
       </p>
 
       <form onSubmit={onSubmit} className="upload">
