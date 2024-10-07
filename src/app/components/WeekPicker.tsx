@@ -19,8 +19,8 @@ export default function WeekPicker() {
           weekEnd,
           "dd/MM/yyyy"
         )}`,
-        start: weekStart,
-        end: weekEnd,
+        start: weekStart.toISOString(),
+        end: weekEnd.toISOString(),
       });
       // Move to the previous week
       weekStart = subWeeks(weekStart, 1);
