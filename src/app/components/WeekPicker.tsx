@@ -6,6 +6,9 @@ import { format, startOfWeek, endOfWeek, isSameWeek, subWeeks } from "date-fns";
 export default function WeekPicker() {
   const [selectedDate, setSelectedDate] = useState<SelectedDate>();
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   // Function to generate weeks for the current year
   const generateWeeks = () => {
     const weeks = [];
@@ -46,8 +49,13 @@ export default function WeekPicker() {
 
   async function getOrders() {
     if (!selectedDate) {
+      setError("Start and end dates are required");
       return null;
     }
+
+    setIsLoading(true);
+    setError(null);
+
     const options: RequestInit = {
       method: "GET",
     };
@@ -60,11 +68,21 @@ export default function WeekPicker() {
       if (!res.ok) {
         throw new Error(`Error: ${res.status}`);
       }
-      const data = await res.json();
-      console.log("log from getorders func", data);
-      return data;
+      const data: OrdersResponse = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.message || "Failed to fetch orders");
+      }
+
+      return data.orders;
     } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
+      setError(errorMessage);
       console.error("Failed to fetch orders:", err);
+      return null;
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -89,6 +107,8 @@ export default function WeekPicker() {
           </option>
         ))}
       </select>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
     </div>
   );
 }
